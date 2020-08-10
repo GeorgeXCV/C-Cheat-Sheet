@@ -42,6 +42,18 @@ int main()
  }
  ```
  
+### Void Functions
+Most functions in C have a return value, but sometimes you might want to create a function that has nothing useful to return. It might just do stuff rather than calculate stuff. Normally, functions always have to contain a return statement, but not if you give your function the return type void:
+
+```c
+void complain() 
+{  
+    puts("I'm really not happy");
+}
+```
+
+In C, the keyword void means it doesn’t matter. As soon as you tell the C compiler that you don’t care about returning a value from the function, you don’t need to have a return statement in your function.
+
  ## Strings
 The C language doesn’t support strings out of the box. C is more low-level than most other languages, so instead of strings, it normally uses something similar: an array of single characters.
 
