@@ -7,8 +7,7 @@
 - [Functions](#functions)
 - [Strings](#strings)
 - [Boolean](#boolean)
-
-
+- [Pointers](#pointers)
 
 ## Intro
 The C language is designed to create small, fast programs. It’s lower-level than most other languages; that means it creates code that’s a lot closer to what machines really understand. C is used where speed, space, and portability are important. Most operating systems are written in C. Most other computer languages are also written in C. And most game software is written in C.
@@ -74,4 +73,39 @@ In C, boolean values are represented by numbers. To C, the number 0 is the value
 int people_moshing = 34;
 if (people_moshing)    
   take_off_glasses();
+```
+
+## Pointers
+A pointer is the address of a piece of data in memory. Instead of passing around a whole copy of the data, you can just pass a pointer. You can have two pieces of code to work on the same piece of data rather than a separate copy.
+
+Every time you declare a variable, the computer creates space for it somewhere in memory. If you declare a variable inside a function like main(), the computer will store it in a section of memory called the stack. If a variable is declared outside any function, it will be stored in the globals section of memory. 
+
+If you want to find out the memory address of the variable, you can use the & operator:
+
+> %p is used to format addresses. 
+
+```c
+printf("x is stored at %p\n", &x);
+```
+
+The address of the variable tells you where to find the variable in memory. That’s why an address is also called a pointer, because it points to the variable in memory.
+
+But once you’ve got the address of a variable, you may want to store it somewhere. To do that, you will need a pointer variable. A pointer variable is just a variable that stores a memory address. When you declare a pointer variable, you need to say what kind of data is stored at the address it will point to:
+
+```c
+int *address_of_x = &x;
+```
+
+When you have a memory address, you will want to read the data that’s stored there. You do that with the * operator:
+
+```c
+int value_stored = *address_of_x;
+```
+
+The * and & operators are opposites. The & operator takes a piece of data and tells you where it’s stored. The * operator takes an address and tells you what’s stored there. Because pointers are sometimes called references, the * operator is said to dereferencea pointer. 
+
+If you have a pointer variable and you want to change the data at the address where the variable’s pointing, you can just use the *operator again. But this time you need to use it on the left side of an assignment:
+
+```c
+*address_of_x = 99;
 ```
