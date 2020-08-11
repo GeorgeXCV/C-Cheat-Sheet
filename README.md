@@ -66,6 +66,23 @@ Strings end in a sentinel character so we have to allow for an extra character i
 char card_name[3];
 ```
 
+### strstr()
+
+The strstr() function will search for the second string in the first string. If it finds the string, it will return the address of the located string in memory.
+
+```c
+strstr("dysfunctional", "fun")
+```
+
+If nothing is found, it returns the value 0 (false). 
+
+```c
+char s0[] = "dysfunctional";
+char s1[] = "fun";
+if (strstr(s0, s1))  
+    puts("I found the fun in dysfunctional!");
+```
+
 ## Boolean
 In C, boolean values are represented by numbers. To C, the number 0 is the value for false. Anything that is not equal to 0 is treated as true. So there is nothing wrong in writing C code like this:
 
