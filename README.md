@@ -9,6 +9,7 @@
 - [Numbers](#numbers)
 - [Boolean](#boolean)
 - [Pointers](#pointers)
+- [Struct](#struct)
 
 ## Intro
 The C language is designed to create small, fast programs. It’s lower-level than most other languages; that means it creates code that’s a lot closer to what machines really understand. C is used where speed, space, and portability are important. Most operating systems are written in C. Most other computer languages are also written in C. And most game software is written in C.
@@ -68,6 +69,13 @@ Strings end in a sentinel character so we have to allow for an extra character i
 ```c
 char card_name[3];
 ```
+
+const char * is used for strings that you don’t want to change. That means it’s often used to record string literals.
+
+```c
+const char *my_str = "This is my very own string literal";
+```
+  
 ## Numbers
 
 ### Int
@@ -173,4 +181,42 @@ If you have a pointer variable and you want to change the data at the address wh
 
 ```c
 *address_of_x = 99;
+```
+## Struct
+If you have a set of data that you need to bundle together into a single thing, then you can use a struct. The word struct is short for structured data type. A struct will let you take all of those different pieces of data into the code and wrap them up into one large new data type, like this:
+
+```c
+struct fish {  
+    const char *name;  
+    const char *species; 
+    int teeth;  
+    int age;
+   };
+   
+   struct fish snappy = {"Snappy", "Piranha", 69, 4};
+   printf("Name = %s\n", snappy.name);
+```
+
+C allows you to create an alias for any struct that you create. If you add the word typedefbefore the structkeyword, and a type nameafter the closing brace, you can call the new type whatever you like: 
+
+```c
+typedef struct cell_phone {  
+    int cell_no;  
+    const char *wallpaper;  
+    float minutes_of_charge;
+    } phone;
+    
+phone p = {5557879, "sinatra.png", 1.35};
+```
+typedefs can shorten your code and make it easier to read. 
+
+If you want a function to update a struct variable, you can’t just pass the struct as a parameter because that will simply send a copy of the data to the function. Instead, you can pass the address of the struct: 
+
+```c
+void happy_birthday(turtle *a)
+   {
+    a->age = a->age + 1;  
+    printf("Happy Birthday %s! You are now %i years old!\n",         
+        a->name, a->age);
+   }
 ```
