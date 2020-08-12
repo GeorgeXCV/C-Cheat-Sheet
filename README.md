@@ -6,6 +6,7 @@
 - [Include](#include)
 - [Functions](#functions)
 - [Strings](#strings)
+- [Numbers](#numbers)
 - [Boolean](#boolean)
 - [Pointers](#pointers)
 
@@ -56,6 +57,8 @@ In C, the keyword void means it doesn’t matter. As soon as you tell the C comp
  ## Strings
 The C language doesn’t support strings out of the box. C is more low-level than most other languages, so instead of strings, it normally uses something similar: an array of single characters.
 
+Each character is stored in the computer’s memory as a character code. And that’s just a number. So when the computer sees A, to the computer it’s the same as seeing the literal number 65 (the ASCII code for A).
+
 If C is going to display a string on the screen, it needs to know when it gets to the end of the character array. And it does this by adding a sentinel character.
 
 The sentinel character is an additional character at the end of the string that has the value \0. Whenever the computer needs to read the contents of the string, it goes through the elements of the character array one at a time, until it reaches \0. 
@@ -64,6 +67,51 @@ Strings end in a sentinel character so we have to allow for an extra character i
 
 ```c
 char card_name[3];
+```
+## Numbers
+
+### Int
+If you need to store a whole number, you can generally just use an int. The exact maximum size of an int can vary, but it’s guaranteed to be at least 16 bits. In general, an int can store numbers up to a few million.
+
+```c
+int x_int = 0;
+```
+
+### Short
+Why use an int if you just want to store numbers up to few hundreds or thousands? That’s what a short is for. A short number usually takes up about half the space of an int. 
+
+```c
+short x_short = 0;
+```
+
+### Long
+Yes, but what if you want to store a really large count? That’s what the long data type was invented for. On some machines, the long data type takes up twice the memory of an int, and it can hold numbers up in the billions. But because most computers can deal with really large ints, on a lot of machines, the long data type is exactly the same size as an int. The maximum size of a long is guaranteed to be at least 32 bits.
+
+```c
+long x_long = 0;
+```
+
+### Float
+Float is the basic data type for storing floating-point numbers. For most everyday floating-point numbers—like the amount of fluid in your orange mocha frappuccino—you can use a float. 
+
+```c
+float x_float = 0.0f; // 'f' suffix here denotes floating point literal
+```
+
+### Double
+If you want to perform calculations that are accurate to a large number of decimal places, then you might want to use a double. A doubletakes up twice the memory of a float, and it uses that extra space to store numbers that are larger and more precise. 
+
+```c
+double x_double = 0.0;
+```
+
+### Unsigned
+The number will always be positive. Because it doesn’t need to worry about recording negative numbers, unsigned numbers can store larger numbers since there’s now one more bit to work with. So an unsignedint stores numbers from 0 to a maximum value that is about twice as large as the maximum number that can be stored inside an int. There’s also a signed keyword, but you almost never see it, because all data types are signed by default.
+
+```c
+unsigned short ux_short;
+unsigned int ux_int;
+unsigned long long ux_long_long;
 ```
 
 ### strstr()
