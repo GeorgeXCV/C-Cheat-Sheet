@@ -10,6 +10,7 @@
 - [Boolean](#boolean)
 - [Pointers](#pointers)
 - [Struct](#struct)
+- [Linked List](#linked-list)
 
 ## Intro
 The C language is designed to create small, fast programs. It’s lower-level than most other languages; that means it creates code that’s a lot closer to what machines really understand. C is used where speed, space, and portability are important. Most operating systems are written in C. Most other computer languages are also written in C. And most game software is written in C.
@@ -219,4 +220,31 @@ void happy_birthday(turtle *a)
     printf("Happy Birthday %s! You are now %i years old!\n",         
         a->name, a->age);
    }
+```
+
+## Linked List
+To store a flexible amount of data, you need something more extensible than an array. Linked lists allow you to store a variable amount of data, and they make it simple to add more data.
+
+### Create a recursive structure
+Each one of the structs in the list will need to connect to the one next to it. A struct that contains a link to another struct of the same type is called a recursive structure.
+ 
+```c
+typedef struct island {  
+    char *name;  
+    char *opens;  
+    char *closes;  
+    struct island  *next; // Store a pointer to the next island in the struct.
+   } island;
+   
+island amity = {"Amity", "09:00", "17:00", NULL};
+island craggy = {"Craggy", "09:00", "17:00", NULL};
+island isla_nublar = {"Isla Nublar", "09:00", "17:00", NULL};
+island shutter = {"Shutter", "09:00", "17:00", NULL};
+amity.next = &craggy;
+craggy.next = &isla_nublar;
+isla_nublar.next = &shutter;
+island skull = {"Skull", "09:00", "17:00", NULL}
+;isla_nublar.next = &skull;
+skull.next = &shutter;
+display(&amity);
 ```
