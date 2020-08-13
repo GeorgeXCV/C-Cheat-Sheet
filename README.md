@@ -4,6 +4,7 @@
 
 - [Intro](#intro)
 - [Include](#include)
+- [Constants](#constants)
 - [Functions](#functions)
 - [Strings](#strings)
 - [Numbers](#numbers)
@@ -28,6 +29,21 @@ For your own headers, use double quotes instead of angle brackets:
 #include "my_header.h"
 ```
 
+## Constants
+Constants: #define <keyword>
+Constants are written in all-caps out of convention, not requirement
+ 
+```c
+#define DAYS_IN_YEAR 365
+```
+Enumeration constants are also ways to declare constants.
+All statements must end with a semicolon.
+
+```c
+enum days {SUN = 1, MON, TUE, WED, THU, FRI, SAT};
+// MON gets 2 automatically, TUE gets 3, etc.
+```
+    
 ## Functions
 All C code runs inside functions. The most important function you will find in any C program is called the main() function. The main()function is the starting point for all of the code in your program.
 
@@ -49,7 +65,20 @@ int main()
     return 0;
  }
  ```
- 
+The command line arguments used to run your program are also passed to main()
+argc being the number of arguments - your program's name counts as 1
+argv is an array of character arrays - containing the arguments themselves
+argv[0] = name of your program, argv[1] = first argument, etc.
+
+```c
+int main (int argc, char** argv)
+{
+  // print output using printf, for "print formatted"
+  // %d is an integer, \n is a newline
+  printf("%d\n", 0); // => Prints 0
+}
+```
+
 ### Void Functions
 Most functions in C have a return value, but sometimes you might want to create a function that has nothing useful to return. It might just do stuff rather than calculate stuff. Normally, functions always have to contain a return statement, but not if you give your function the return type void:
 
@@ -62,7 +91,7 @@ void complain()
 
 In C, the keyword void means it doesn’t matter. As soon as you tell the C compiler that you don’t care about returning a value from the function, you don’t need to have a return statement in your function.
 
- ## Strings
+## Strings
 The C language doesn’t support strings out of the box. C is more low-level than most other languages, so instead of strings, it normally uses something similar: an array of single characters.
 
 Each character is stored in the computer’s memory as a character code. And that’s just a number. So when the computer sees A, to the computer it’s the same as seeing the literal number 65 (the ASCII code for A).
