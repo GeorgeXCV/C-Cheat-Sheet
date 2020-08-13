@@ -21,6 +21,12 @@ C is a very, very small language and it can do almost nothing without the use of
 ```c
 #include <stdio.h>
 ```
+File names between <angle brackets> are headers from the C standard library.
+For your own headers, use double quotes instead of angle brackets:
+
+```c
+#include "my_header.h"
+```
 
 ## Functions
 All C code runs inside functions. The most important function you will find in any C program is called the main() function. The main()function is the starting point for all of the code in your program.
